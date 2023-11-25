@@ -13,22 +13,42 @@ public class Main {
 		int y2 = scanner.nextInt();
 		int dx = Math.abs(x1 - x2);
 		int dy = Math.abs(y1 - y2);
-		// Ход ладьи
-		System.out.println("Может ли ладья сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
-		boolean canRookMove  = (dx == 0) || (dy == 0);
-		System.out.println(canRookMove);
-		// Ход слона
-		System.out.println("Может ли слон сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
-		boolean canBishopMove = (dx == dy);
-		System.out.println(canBishopMove);
-		// Ход ферзя
-		System.out.println("Может ли ферзь сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
-		boolean canQueenMove = canRookMove || canBishopMove;
-		System.out.println(canQueenMove);
-		// Ход конь
-		System.out.println("Может ли конь сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
-		boolean canKnightMove = ((dx == 1) && (dy == 2)) || ((dx == 2) && (dy == 1));
-		System.out.println(canKnightMove);
+		if(dx != 0 || dy != 0) {
+			// Ход ладьи
+			System.out.println("Может ли ладья сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
+			boolean canRookMove  = (dx == 0) || (dy == 0);
+			if(canRookMove) {
+				System.out.println("Может.");
+			} else {
+				System.out.println("Не может.");
+			}
+			// Ход слона
+			System.out.println("Может ли слон сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
+			boolean canBishopMove = (dx == dy);
+			if(canBishopMove) {
+				System.out.println("Может.");
+			} else {
+				System.out.println("Не может.");
+			}
+			// Ход ферзя
+			System.out.println("Может ли ферзь сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
+			boolean canQueenMove = canRookMove || canBishopMove;
+			if(canQueenMove) {
+				System.out.println("Может.");
+			} else {
+				System.out.println("Не может.");
+			}
+			// Ход конь
+			System.out.println("Может ли конь сделать ход из клетки (" + x1 + ", " + y1 + ") в клетку (" + x2 + ", " + y2 +")?");
+			boolean canKnightMove = ((dx == 1) && (dy == 2)) || ((dx == 2) && (dy == 1));
+			if(canKnightMove) {
+				System.out.println("Может.");
+			} else {
+				System.out.println("Не может.");
+			}
+		} else {
+			System.out.println("Ошибка! Введены координаты одной и той же клетки.");
+		}
 		scanner.close();
 	}
 }
