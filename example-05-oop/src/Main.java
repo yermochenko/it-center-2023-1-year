@@ -17,8 +17,9 @@ class SystemBlock {
 	int power;
 	// TODO: добавить поля "процессор" и "память"
 	public void out() {
-		System.out.println("Мощность блока питания: " + power + " Вт");
-		System.out.println("Стоимость системного блока: " + Main.formatPrice(price));
+		System.out.println("Системный блок:");
+		System.out.println("    Цена    : " + Main.formatPrice(price));
+		System.out.println("    Мощность: " + power + " Вт");		
 		// TODO: добавить вывод информации о процессоре и памяти
 	}
 }
@@ -33,27 +34,12 @@ class Monitor {
 		if(number == 0) {
 			System.out.print("Монитор: ");
 		} else {
-			System.out.print("Монитор № " + number + ": ");
+			System.out.print("Монитор №" + number + ": ");
 		}
-		System.out.println(name);
-		if(number == 0) {
-			System.out.print("Цена монитора: ");
-		} else {
-			System.out.print("Цена " + number + "-го монитора: ");
-		}
-		System.out.println(Main.formatPrice(price));
-		if(number == 0) {
-			System.out.print("Размер диагонали монитора: ");
-		} else {
-			System.out.print("Размер диагонали " + number + "-го монитора: ");
-		}
-		System.out.println(diagonal + "\"");
-		if(number == 0) {
-			System.out.print("Разрешение монитора: ");
-		} else {
-			System.out.print("Разрешение " + number + "-го монитора: ");
-		}
-		System.out.println(pixelsWidth + " x " + pixelsHeight);
+		System.out.println(name + ":");
+		System.out.println("    Цена      : " + Main.formatPrice(price));
+		System.out.println("    Диагональ : " + diagonal + "\"");
+		System.out.println("    Разрешение: " + pixelsWidth + " x " + pixelsHeight);						
 	}
 }
 
@@ -65,7 +51,7 @@ class Computer {
 	public void out() {
 		System.out.println("********** Компьютер **********");
 		System.out.println("Модель: " + name);
-		System.out.println("Общая стоимость: " + Main.formatPrice(price));	
+		System.out.println("Цена  : " + Main.formatPrice(price));	
 		systemBlock.out();
 		if(monitors.length == 1) {
 			monitors[0].out(0);
