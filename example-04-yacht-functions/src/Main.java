@@ -33,7 +33,7 @@ public class Main {
 		return sum;
 	}
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		String[] names = {"Единицы", "Двойки", "Тройки", "Четвёрки", "Пятёрки", "Шестёрки"};
 		//int[] x = {1, 4, 1, 4, 4};
 		//*
