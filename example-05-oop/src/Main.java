@@ -1,5 +1,5 @@
 class Cpu {
-	// TODO: сделать методы приватными
+	// TODO: сделать поля приватными
 	String name;
 	int price;
 	int cores;
@@ -9,7 +9,7 @@ class Cpu {
 }
 
 class Ram {
-	// TODO: сделать методы приватными
+	// TODO: сделать поля приватными
 	int price;
 	int volume;
 	// TODO: добавить метод out()
