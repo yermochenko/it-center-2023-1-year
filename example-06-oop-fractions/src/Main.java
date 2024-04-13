@@ -37,6 +37,9 @@ class Fraction {
 	public static Fraction add(Fraction x, Fraction y) {
 		return new Fraction(x.p * y.q + y.p * x.q, x.q * y.q);
 	}
+	// TODO: добавить метод для вычитания дробей
+	// TODO: добавить метод для умножения дробей
+	// TODO: добавить метод для деления дробей
 	private static int gcd(int m, int n) {
 		m = Math.abs(m);
 		n = Math.abs(n);
