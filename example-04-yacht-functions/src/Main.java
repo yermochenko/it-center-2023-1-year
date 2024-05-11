@@ -1,57 +1,38 @@
 import java.util.Arrays;
 
+import combo.Chance;
+import combo.Combination;
+import combo.FullHouse;
+import combo.TopSection;
+import combo.Yacht;
+import dice.Dice;
+
 public class Main {
-	static int rollDice() {
-		return (int)(Math.random() * 6) + 1;
-	}
-
-	static int topSection(int[] d, int value) {
-		int sum = 0;
-		int i = 0;
-		while(i < d.length) {
-			if(d[i] == value) sum += value;
-			i++;
-		}
-		return sum;
-	}
-
-	static int fullHouse(int[] d) {
-		Arrays.sort(d);
-		if(d[0] == d[1] && d[3] == d[4] && (d[1] == d[2] || d[2] == d[3])) {
-			return 40;
-		}
-		return 0;
-	}
-
-	static int chance(int[] d) {
-		int sum = 0;
-		int i = 0;
-		while(i < d.length) {
-			sum += d[i];
-			i++;
-		}
-		return sum;
-	}
-
 	public static void main(String[] args) {
-		String[] names = {"Единицы", "Двойки", "Тройки", "Четвёрки", "Пятёрки", "Шестёрки"};
-		//int[] x = {1, 4, 1, 4, 4};
+		/*
+		Dice[] dices = {new Dice(5), new Dice(1), new Dice(5), new Dice(5), new Dice(1)};
+		//*/
 		//*
-		int[] x = new int[5];
-		int i = 0;
-		while(i < x.length) {
-			x[i] = rollDice();
-			i++;
+		Dice[] dices = new Dice[5];
+		for(int i = 0; i < dices.length; i++) {
+			dices[i] = new Dice();
 		}
 		//*/
 
-		System.out.println(Arrays.toString(x));
-		int n = 1;
-		while(n <= names.length) {
-			System.out.println("Очки для комбинации \"" + names[n - 1] + "\": " + topSection(x, n));
-			n++;
+		System.out.println(Arrays.toString(dices));
+		Combination[] combinations = {
+			new TopSection("Единицы", 1),
+			new TopSection("Двойки", 2),
+			new TopSection("Тройки", 3),
+			new TopSection("Четвёрки", 4),
+			new TopSection("Пятёрки", 5),
+			new TopSection("Шестёрки", 6),
+			new Chance(),
+			new FullHouse(),
+			new Yacht()
+		};
+		for(int i = 0; i < combinations.length; i++) {
+			System.out.println("Очки для комбинации \"" + combinations[i].getName() + "\": " + combinations[i].points(dices));
 		}
-		System.out.println("Очки для комбинации \"Фул Хаус\": " + fullHouse(x));
-		System.out.println("Очки для комбинации \"Шанс\": " + chance(x));
 	}
 }
