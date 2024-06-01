@@ -56,9 +56,9 @@ public class Game {
 					showCombinations();
 				}
 			}
-			int usedCombination = askCombination();
-			points += combinations[usedCombination].points(dices);
-			deleteCombination(usedCombination);
+			int usedCombinationIndex = askUsedCombination();
+			points += combinations[usedCombinationIndex].points(dices);
+			deleteCombination(usedCombinationIndex);
 		}
 		return points;
 	}
@@ -78,7 +78,7 @@ public class Game {
 		}
 	}
 
-	private int askCombination() {
+	private int askUsedCombination() {
 		System.out.print("Введите номер используемой комбинации: ");
 		return con.nextInt() - 1;
 	}
