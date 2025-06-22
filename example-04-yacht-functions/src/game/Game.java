@@ -41,18 +41,20 @@ public class Game {
 
 	public int play() {
 		while (combinations.length > 0) {
+			System.out.println("***** Начало раунда *****");
+			System.out.println("Всего очков: " + points);
 			roll();
-			System.out.println(Arrays.toString(dices));
+			System.out.println(Arrays.toString(dices) + "\n");
 			showCombinations();
 			int[] indexes = askRerollDices();
 			if (indexes.length > 0) {
 				roll(indexes);
-				System.out.println(Arrays.toString(dices));
+				System.out.println(Arrays.toString(dices) + "\n");
 				showCombinations();
 				indexes = askRerollDices();
 				if (indexes.length > 0) {
 					roll(indexes);
-					System.out.println(Arrays.toString(dices));
+					System.out.println(Arrays.toString(dices) + "\n");
 					showCombinations();
 				}
 			}
@@ -80,26 +82,40 @@ public class Game {
 
 	private int askUsedCombination() {
 		System.out.print("Введите номер используемой комбинации: ");
-		return con.nextInt() - 1;
+		return Integer.parseInt(con.nextLine()) - 1;
 	}
 
 	private int[] askRerollDices() {
-		System.out.print("Введите количество перебрасываемых кубиков: ");
-		int n = con.nextInt();
-		int[] indexes = new int[n];
-		if (n > 0) {
-			System.out.print("Введите номера кубиков (через пробел): ");
-			for (int i = 0; i < n; i++) {
-				indexes[i] = con.nextInt() - 1;
+//		System.out.print("Введите количество перебрасываемых кубиков: ");
+//		int n = con.nextInt();
+//		int[] indexes = new int[n];
+//		if (n > 0) {
+//			System.out.print("Введите номера кубиков (через пробел): ");
+//			for (int i = 0; i < n; i++) {
+//				indexes[i] = con.nextInt() - 1;
+//			}
+//		}
+
+		System.out.print("Введите номера кубиков (через пробел): ");
+		String str = con.nextLine().trim();
+		if(!str.isEmpty()) {
+			String[] strs = str.split("\\s+");
+			int[] indexes = new int[strs.length];
+			for(int i = 0; i < strs.length; i++) {
+				indexes[i] = Integer.parseInt(strs[i]) - 1;
 			}
+			return indexes;
+		} else {
+			return new int[0];
 		}
-		return indexes;
 	}
 
 	private void showCombinations() {
+		System.out.println("Доступные комбинации:");
 		for (int i = 0; i < combinations.length; i++) {
-			System.out.println((i + 1) + ") " + combinations[i].getName() + ", " + combinations[i].points(dices));
+			System.out.println("   " + (i + 1) + ") " + combinations[i].getName() + ", " + combinations[i].points(dices));
 		}
+		System.out.println();
 	}
 
 	private void roll(int... indexes) {
